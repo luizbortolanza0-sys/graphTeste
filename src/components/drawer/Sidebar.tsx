@@ -115,11 +115,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onMobileClose }) =
           )}
         </Box>
 
-        {!isMobile && (
-          <IconButton onClick={handleToggleExpand} size="small" sx={{ color: 'text.secondary' }}>
-            {isExpanded ? <ChevronLeftRoundedIcon /> : <ChevronRightRoundedIcon />}
-          </IconButton>
-        )}
+        
       </Box>
 
       {/* Menu List */}
@@ -200,7 +196,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onMobileClose }) =
       <Divider sx={{ mx: 2 }} />
 
       {/* Theme Toggle Footer */}
-      <Box sx={{ p: 2, display: 'flex', justifyContent: isMini ? 'center' : 'space-between', alignItems: 'center' }}>
+      <Box sx={{ p: 2, display: 'flex', 
+        flexDirection: 'column',    
+        justifyContent: isMini ? 'center' : 'space-between',
+        alignItems: 'center' }}>
+        {!isMobile && (
+          <IconButton onClick={handleToggleExpand} size="small" sx={{ color: 'text.secondary' }}>
+            {isExpanded ? <ChevronLeftRoundedIcon /> : <ChevronRightRoundedIcon />}
+          </IconButton>
+        )}
+        
         {!isMini && (
           <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
             Modo {mode === 'dark' ? 'Escuro' : 'Claro'}
