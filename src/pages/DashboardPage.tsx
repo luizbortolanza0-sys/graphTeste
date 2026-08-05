@@ -58,6 +58,7 @@ export const DashboardPage: React.FC = () => {
         <Box
           sx={{
             display: 'grid',
+            width: '100%',
             gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
             gap: { xs: 2, md: 2.5 },
           }}

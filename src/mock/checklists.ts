@@ -56,8 +56,8 @@ export function generateMockChecklists(count: number = 500): Checklist[] {
     // Placa
     const letras = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
     const p1 = letras[Math.floor(pseudoRandom(seed + 4) * 24)] +
-               letras[Math.floor(pseudoRandom(seed + 5) * 24)] +
-               letras[Math.floor(pseudoRandom(seed + 6) * 24)];
+      letras[Math.floor(pseudoRandom(seed + 5) * 24)] +
+      letras[Math.floor(pseudoRandom(seed + 6) * 24)];
     const p2 = Math.floor(pseudoRandom(seed + 7) * 10);
     const p3 = letras[Math.floor(pseudoRandom(seed + 8) * 24)];
     const p4 = Math.floor(pseudoRandom(seed + 9) * 90 + 10);

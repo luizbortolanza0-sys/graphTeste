@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Paper,
   Box,
@@ -6,12 +6,8 @@ import {
   IconButton,
   Tooltip,
   Skeleton,
-  Dialog,
-  DialogContent,
 } from '@mui/material';
 import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
-import FullscreenRoundedIcon from '@mui/icons-material/FullscreenRounded';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useColorMode } from '../../context/ThemeContext';
 
 interface ChartCardWrapperProps {
@@ -32,14 +28,9 @@ export const ChartCardWrapper: React.FC<ChartCardWrapperProps> = ({
   children,
 }) => {
   const { mode } = useColorMode();
-  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
-
-  const handleToggleFullscreen = () => {
-    setIsFullscreen((prev) => !prev);
-  };
 
   const chartBody = (
-    <Box sx={{ flexGrow: 1, position: 'relative', minHeight: isFullscreen ? 420 : 280 }}>
+    <Box sx={{ flexGrow: 1, position: 'relative', minHeight: 280 }}>
       {isLoading ? (
         <Box sx={{ p: 2, height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Skeleton variant="rectangular" width="100%" height={240} sx={{ borderRadius: '12px' }} />
@@ -113,49 +104,11 @@ export const ChartCardWrapper: React.FC<ChartCardWrapperProps> = ({
                 </IconButton>
               </Tooltip>
             )}
-
-            <Tooltip title="Tela cheia">
-              <IconButton size="small" onClick={handleToggleFullscreen} sx={{ color: 'text.secondary', width: 30, height: 30 }}>
-                <FullscreenRoundedIcon sx={{ fontSize: 16 }} />
-              </IconButton>
-            </Tooltip>
           </Box>
         </Box>
 
         {chartBody}
       </Paper>
-
-      {/* Fullscreen Dialog */}
-      <Dialog
-        fullWidth
-        maxWidth="lg"
-        open={isFullscreen}
-        onClose={handleToggleFullscreen}
-        slotProps={{
-          paper: {
-            sx: {
-              borderRadius: '20px',
-              p: 3,
-              bgcolor: mode === 'dark' ? '#1A1D27' : '#FFFFFF',
-            },
-          },
-        }}
-      >
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-          <Box>
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>{title}</Typography>
-            {description && (
-              <Typography variant="body2" color="text.secondary">{description}</Typography>
-            )}
-          </Box>
-          <IconButton onClick={handleToggleFullscreen} size="small">
-            <CloseRoundedIcon />
-          </IconButton>
-        </Box>
-        <DialogContent sx={{ p: 0 }}>
-          {chartBody}
-        </DialogContent>
-      </Dialog>
     </>
   );
 };
