@@ -121,4 +121,4 @@ export function generateMockChecklists(count: number = 500): Checklist[] {
   return list.sort((a, b) => (a.data < b.data ? 1 : -1));
 }
 
-export const mockChecklists = generateMockChecklists(50000);
+export const mockChecklists = generateMockChecklists(5000);
