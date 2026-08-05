@@ -9,6 +9,7 @@ import { VerticalChecklistChart } from '../components/charts/VerticalChecklistCh
 import { StatusPieChart } from '../components/charts/StatusPieChart';
 import { RejectedPeripheralsChart } from '../components/charts/RejectedPeripheralsChart';
 import { useDashboard } from '../context/DashboardContext';
+import { BrasilMapChart } from '../components/charts/BrasilMapChart';
 
 export const DashboardPage: React.FC = () => {
   const { filteredChecklists, clearAllFilters } = useDashboard();
@@ -67,6 +68,7 @@ export const DashboardPage: React.FC = () => {
           <VerticalChecklistChart />
           <StatusPieChart />
           <RejectedPeripheralsChart />
+          <BrasilMapChart />
         </Box>
       )}
     </Box>

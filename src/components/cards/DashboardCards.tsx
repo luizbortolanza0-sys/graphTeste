@@ -64,6 +64,7 @@ export const DashboardCards: React.FC = () => {
         isActiveFilter={filters.status === 'Pendente'}
         onClick={() => toggleStatusFilter('Pendente')}
       />
+      
       <MetricCard
         title="Reprovados"
         value={metrics.reprovados.value}

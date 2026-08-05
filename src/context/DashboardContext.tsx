@@ -33,6 +33,7 @@ interface DashboardContextType {
   // Cross-filtering helpers
   toggleStatusFilter: (status: StatusChecklist) => void;
   toggleCategoriaFilter: (categoria: CategoriaVeiculo) => void;
+  toggleFilialFilter: (filial: string) => void;
 }
 
 const DashboardContext = createContext<DashboardContextType | undefined>(undefined);
@@ -70,6 +71,13 @@ export const DashboardProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     setFilters((prev) => ({
       ...prev,
       status: prev.status === status ? 'Todos' : status,
+    }));
+  }, []);
+
+  const toggleFilialFilter = useCallback((filial: string) => {
+    setFilters((prev) => ({
+      ...prev,
+      filial: prev.filial === filial ? 'Todos' : filial,
     }));
   }, []);
 
@@ -175,6 +183,7 @@ export const DashboardProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         triggerRefresh,
         toggleStatusFilter,
         toggleCategoriaFilter,
+        toggleFilialFilter,
       }}
     >
       {children}
